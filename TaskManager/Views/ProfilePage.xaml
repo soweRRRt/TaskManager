@@ -1,0 +1,44 @@
+﻿<Page x:Class="TaskManager.Views.ProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Профиль пользователя"
+      Background="{StaticResource BackgroundColor}"
+      Foreground="{StaticResource TextColor}"
+      FontFamily="{StaticResource AppFont}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20" >
+
+            <!-- Аватарка -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20" VerticalAlignment="Center">
+                <Image Name="imgAvatar" Width="100" Height="100" Stretch="UniformToFill" Margin="0,0,20,0" />
+                <StackPanel>
+                    <Button Content="Выбрать аватарку" Click="SelectAvatar_Click" Width="150"/>
+                    <Button Content="Сохранить аватарку" Click="SaveAvatar_Click" Width="150" Margin="0,10,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Имя отображения -->
+            <TextBlock Text="Имя отображения:" FontWeight="Bold"/>
+            <TextBox Name="txtDisplayName" Height="30" Margin="0,5,0,15"/>
+
+            <!-- Email -->
+            <TextBlock Text="Email:" FontWeight="Bold"/>
+            <TextBox Name="txtEmail" Height="30" Margin="0,5,0,5"/>
+            <TextBlock Name="txtEmailStatus" Margin="10,0,0,0" VerticalAlignment="Center" />
+            <StackPanel Name="emailConfirmationPanel" Margin="0,0,0,15">
+                <Button Content="Отправить код подтверждения" Click="SendEmailConfirmationCode_Click" />
+                <TextBlock Text="Код подтверждения:" FontWeight="Bold" />
+                <TextBox Name="txtEmailCode" Height="30" Margin="0,5,0,15" Width="150" />
+                <Button Content="Подтвердить Email" Click="ConfirmEmail_Click" Width="150" Margin="0,0,0,20" />
+            </StackPanel>
+
+            <!-- Двухфакторная аутентификация -->
+            <CheckBox Name="chkTwoFactor" Content="Включить двухфакторную аутентификацию" Margin="0,0,0,20" Checked="TwoFactor_Checked" Unchecked="TwoFactor_Unchecked" IsEnabled="False"/>
+
+            <!-- Кнопка сохранить изменения -->
+            <Button Content="Сохранить изменения" Click="SaveProfile_Click" Height="40" />
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>
